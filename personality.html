@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Personality Test</title>
+</head>
+
+<body>
+
+<h1>MBTI Style Personality Test</h1>
+
+<p>Do you enjoy social gatherings?</p>
+
+<button onclick="extrovert()">Yes</button>
+
+<button onclick="introvert()">No</button>
+
+<h2 id="result"></h2>
+
+<script>
+
+function extrovert(){
+
+localStorage.setItem("personality","Extrovert");
+
+document.getElementById("result").innerText="You are Extrovert";
+
+}
+
+function introvert(){
+
+localStorage.setItem("personality","Introvert");
+
+document.getElementById("result").innerText="You are Introvert";
+
+}
+
+</script>
+
+</body>
+</html>
