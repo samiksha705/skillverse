@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Interview Practice</title>
+</head>
+
+<body>
+
+<h1>Interview Practice</h1>
+
+<button onclick="generateQuestion()">Generate Question</button>
+
+<h2 id="question"></h2>
+
+<script>
+
+const questions=[
+
+"Tell me about yourself",
+
+"Why should we hire you?",
+
+"What are your strengths?",
+
+"What are your weaknesses?",
+
+"Where do you see yourself in 5 years?",
+
+"Describe a leadership situation",
+
+"Tell me about a challenge you solved"
+
+];
+
+function generateQuestion(){
+
+let q = questions[Math.floor(Math.random()*questions.length)];
+
+document.getElementById("question").innerText = q;
+
+}
+
+</script>
+
+</body>
+</html>
