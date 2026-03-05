@@ -1,69 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
-<title>SkillVerse - Soft Skills Platform</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NextGen Soft Skills Hub</title>
 
-<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
 
 body{
-font-family:Arial;
-background:#0f172a;
-color:white;
-text-align:center;
 margin:0;
-}
-
-header{
-padding:30px;
-background:#1e293b;
-}
-
-.menu{
-margin-top:40px;
-}
-
-.menu a{
-display:block;
-margin:15px auto;
-background:#3b82f6;
-padding:12px;
+font-family: 'Segoe UI', sans-serif;
+background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 color:white;
-text-decoration:none;
-width:240px;
-border-radius:6px;
-font-size:18px;
 }
 
-.menu a:hover{
-background:#2563eb;
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(10px);
+}
+
+nav h1{
+color:#00f7ff;
+}
+
+nav a{
+color:white;
+margin-left:25px;
+text-decoration:none;
+font-weight:500;
+}
+
+nav a:hover{
+color:#00f7ff;
+}
+
+.hero{
+text-align:center;
+padding:120px 20px;
+}
+
+.hero h2{
+font-size:55px;
+color:#00f7ff;
+}
+
+.hero p{
+font-size:20px;
+max-width:800px;
+margin:auto;
+line-height:1.6;
+}
+
+.btn{
+margin-top:30px;
+padding:15px 40px;
+background:#00f7ff;
+border:none;
+border-radius:30px;
+font-size:18px;
+cursor:pointer;
+}
+
+.btn:hover{
+background:white;
+}
+
+.section{
+padding:80px 10%;
+}
+
+.section h2{
+text-align:center;
+font-size:40px;
+margin-bottom:40px;
+color:#00f7ff;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+padding:30px;
+border-radius:15px;
+text-align:center;
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+background:rgba(255,255,255,0.1);
+}
+
+.card img{
+width:80px;
+margin-bottom:15px;
+}
+
+.card h3{
+color:#00f7ff;
+}
+
+footer{
+text-align:center;
+padding:30px;
+background:black;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<header>
+<nav>
 
-<h1>🚀 SkillVerse</h1>
-<p>Next Generation Soft Skills Learning Platform</p>
+<h1>NextGen Soft Skills</h1>
 
-</header>
-
-<div class="menu">
-
-<a href="skills.html">Learn Soft Skills</a>
-
-<a href="interview.html">Interview Practice</a>
-
+<div>
+<a href="#importance">Importance</a>
+<a href="#skills">Skills</a>
 <a href="personality.html">Personality Test</a>
+<a href="interview.html">Interview Practice</a>
+</div>
+
+</nav>
+
+<section class="hero">
+
+<h2>Master the Future with Powerful Soft Skills</h2>
+
+<p>
+Technical knowledge may get you a job, but strong soft skills help you grow, lead,
+communicate, and succeed in every area of life.  
+Our Next-Generation platform helps students develop communication, leadership,
+emotional intelligence, teamwork, and critical thinking through interactive learning.
+</p>
+
+<button class="btn" onclick="scrollToSection()">Start Learning</button>
+
+</section>
+
+
+<section class="section" id="importance">
+
+<h2>Importance of Soft Skills</h2>
+
+<p style="font-size:18px;line-height:1.8">
+
+Soft skills are the personal and interpersonal abilities that determine how effectively
+individuals communicate, collaborate, and perform in professional and social environments.
+In the modern digital world, employers are no longer looking only for technical knowledge.
+They are looking for individuals who can work with teams, solve problems creatively,
+communicate ideas clearly, and manage emotions under pressure.
+
+Many studies show that over 80% of career success comes from soft skills rather than
+technical knowledge. Soft skills influence how people interact with colleagues,
+clients, and leaders. They shape how a person handles conflict, adapts to change,
+and contributes to the success of an organization.
+
+In today’s competitive environment, students must develop strong communication
+abilities, emotional awareness, teamwork mindset, leadership qualities,
+and the ability to think critically. These skills help individuals build
+strong relationships, inspire others, and create a positive working environment.
+
+Soft skills are also essential for entrepreneurship and innovation.
+Successful entrepreneurs are not only good at creating products or services;
+they are also excellent communicators, decision makers, and leaders.
+They understand people’s needs and can motivate teams to achieve shared goals.
+
+Developing soft skills is a continuous learning journey. Through practice,
+self-reflection, and real-life experiences, individuals can gradually improve
+their abilities and become more confident, adaptable, and effective in
+different situations.
+
+Our platform is designed to help students strengthen these essential abilities
+through learning modules, personality assessments, and interview practice
+activities that simulate real-world situations.
+
+</p>
+
+</section>
+
+
+<section class="section" id="skills">
+
+<h2>Core Soft Skills You Will Learn</h2>
+
+<div class="cards">
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/747/747376.png">
+<h3>Communication Skills</h3>
+<p>
+Learn how to express ideas clearly, listen actively, and communicate
+confidently in professional environments.
+</p>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/4140/4140047.png">
+<h3>Leadership</h3>
+<p>
+Develop the ability to guide teams, motivate people,
+and make effective decisions in challenging situations.
+</p>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/4149/4149678.png">
+<h3>Teamwork</h3>
+<p>
+Understand how collaboration, trust, and cooperation
+lead to successful team outcomes.
+</p>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/4149/4149693.png">
+<h3>Emotional Intelligence</h3>
+<p>
+Improve self-awareness, empathy, and emotional control
+to build stronger relationships.
+</p>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/992/992651.png">
+<h3>Critical Thinking</h3>
+<p>
+Learn how to analyze problems, evaluate solutions,
+and make logical decisions.
+</p>
+</div>
 
 </div>
+
+</section>
+
+<footer>
+
+<p>NextGen Soft Skills Platform | Designed for Students</p>
+
+</footer>
+
+<script>
+
+function scrollToSection(){
+document.getElementById("skills").scrollIntoView({behavior:"smooth"});
+}
+
+</script>
 
 </body>
 </html>
