@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Progress</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<h1>Your Skill Progress</h1>
+
+<canvas id="myChart"></canvas>
+
+<script>
+
+let points = localStorage.getItem("skillpoints");
+
+if(points == null){
+points = 0;
+}
+
+var ctx = document.getElementById('myChart').getContext('2d');
+
+var chart = new Chart(ctx, {
+
+type: 'bar',
+
+data: {
+
+labels: ['Soft Skill Points'],
+
+datasets: [{
+
+label: 'Your Progress',
+
+data: [points]
+
+}]
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
