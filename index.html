@@ -1,49 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>SkillVerse - Next Gen Soft Skills</title>
+<title>SkillVerse</title>
 <link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body>
 
-<header>
 <h1>🚀 SkillVerse</h1>
-<p>Next Generation Soft Skill Learning Platform</p>
 
-<button onclick="toggleMode()">🌙 Toggle Mode</button>
-</header>
+<div class="menu">
 
-<section class="skills">
+<a href="interview.html">Interview Practice</a>
 
-<div class="card">
-<h2>🗣 Communication</h2>
-<p>Improve speaking and confidence.</p>
-<a href="pages/communication.html">Start</a>
+<a href="personality.html">Personality Test</a>
+
+<a href="progress.html">View Progress</a>
+
 </div>
 
-<div class="card">
-<h2>👑 Leadership</h2>
-<p>Develop leadership qualities.</p>
-<a href="pages/leadership.html">Start</a>
-</div>
+<h2>Your Skill Points</h2>
 
-<div class="card">
-<h2>💼 Interview Skills</h2>
-<p>Practice real interview questions.</p>
-<a href="pages/interview.html">Start</a>
-</div>
+<p id="points"></p>
 
-</section>
-
-<section class="challenge">
-
-<h2>🔥 Daily Challenge</h2>
-<p id="challengeText"></p>
-<button onclick="newChallenge()">Generate Challenge</button>
-
-</section>
+<button onclick="addPoints()">Complete Practice +10</button>
 
 <script src="script.js"></script>
 
