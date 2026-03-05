@@ -1,40 +1,127 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+
 <title>Personality Test</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+padding:40px;
+}
+
+button{
+padding:10px 20px;
+margin:10px;
+background:#3b82f6;
+border:none;
+color:white;
+border-radius:6px;
+}
+
+</style>
+
 </head>
 
 <body>
 
 <h1>MBTI Style Personality Test</h1>
 
-<p>Do you enjoy social gatherings?</p>
+<h2 id="question"></h2>
 
-<button onclick="extrovert()">Yes</button>
+<button onclick="answer('A')">Option A</button>
+<button onclick="answer('B')">Option B</button>
 
-<button onclick="introvert()">No</button>
-
-<h2 id="result"></h2>
+<p id="result"></p>
 
 <script>
 
-function extrovert(){
+let current = 0
+let score = 0
 
-localStorage.setItem("personality","Extrovert");
+const questions = [
 
-document.getElementById("result").innerText="You are Extrovert";
+{
+q:"You enjoy group discussions and social interaction",
+a:"Yes",
+b:"No"
+},
+
+{
+q:"You prefer planning before doing work",
+a:"Yes",
+b:"No"
+},
+
+{
+q:"You make decisions based on logic rather than feelings",
+a:"Yes",
+b:"No"
+},
+
+{
+q:"You enjoy leading team activities",
+a:"Yes",
+b:"No"
+},
+
+{
+q:"You like meeting new people",
+a:"Yes",
+b:"No"
+}
+
+]
+
+function loadQuestion(){
+
+document.getElementById("question").innerText =
+questions[current].q
 
 }
 
-function introvert(){
+function answer(option){
 
-localStorage.setItem("personality","Introvert");
+if(option==="A") score++
 
-document.getElementById("result").innerText="You are Introvert";
+current++
+
+if(current < questions.length){
+
+loadQuestion()
+
+}else{
+
+showResult()
 
 }
+
+}
+
+function showResult(){
+
+let personality = ""
+
+if(score >=3)
+personality="Extrovert Leader"
+
+else
+personality="Calm Thinker"
+
+document.getElementById("result").innerText =
+"Your personality type: " + personality
+
+}
+
+loadQuestion()
 
 </script>
 
 </body>
+
 </html>
