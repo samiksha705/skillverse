@@ -1,46 +1,107 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+
 <title>Interview Practice</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+padding:40px;
+}
+
+textarea{
+width:60%;
+height:120px;
+margin-top:20px;
+}
+
+button{
+margin-top:20px;
+padding:10px 20px;
+background:#3b82f6;
+border:none;
+color:white;
+border-radius:6px;
+}
+
+</style>
+
 </head>
 
 <body>
 
-<h1>Interview Practice</h1>
-
-<button onclick="generateQuestion()">Generate Question</button>
+<h1>Soft Skills Interview Practice</h1>
 
 <h2 id="question"></h2>
 
+<textarea id="answer" placeholder="Type your answer here..."></textarea>
+
+<br>
+
+<button onclick="nextQuestion()">Submit & Next Question</button>
+
 <script>
 
-const questions=[
+let current = 0
 
-"Tell me about yourself",
+const questions = [
 
-"Why should we hire you?",
+"Tell me about a time when you worked in a team",
 
-"What are your strengths?",
+"How do you handle conflicts with coworkers?",
 
-"What are your weaknesses?",
+"Describe a situation where you showed leadership",
 
-"Where do you see yourself in 5 years?",
+"How do you manage your time when facing multiple deadlines?",
 
-"Describe a leadership situation",
+"How do you stay motivated during difficult tasks?",
 
-"Tell me about a challenge you solved"
+"What does good communication mean to you?",
 
-];
+"Describe a challenge you solved with teamwork"
 
-function generateQuestion(){
+]
 
-let q = questions[Math.floor(Math.random()*questions.length)];
+function loadQuestion(){
 
-document.getElementById("question").innerText = q;
+document.getElementById("question").innerText =
+questions[current]
 
 }
+
+function nextQuestion(){
+
+let ans = document.getElementById("answer").value
+
+console.log("User answer:",ans)
+
+document.getElementById("answer").value=""
+
+current++
+
+if(current < questions.length){
+
+loadQuestion()
+
+}else{
+
+document.getElementById("question").innerText =
+"Interview Practice Completed"
+
+}
+
+}
+
+loadQuestion()
 
 </script>
 
 </body>
+
 </html>
