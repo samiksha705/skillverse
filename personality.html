@@ -3,7 +3,7 @@
 
 <head>
 
-<title>Personality Test</title>
+<title>Situational Personality Test</title>
 
 <style>
 
@@ -15,13 +15,35 @@ text-align:center;
 padding:40px;
 }
 
+.container{
+width:60%;
+margin:auto;
+background:#1e293b;
+padding:30px;
+border-radius:10px;
+}
+
 button{
-padding:10px 20px;
-margin:10px;
+display:block;
+width:100%;
+margin:15px 0;
+padding:12px;
 background:#3b82f6;
 border:none;
 color:white;
 border-radius:6px;
+cursor:pointer;
+font-size:16px;
+}
+
+button:hover{
+background:#2563eb;
+}
+
+.progress{
+margin-bottom:20px;
+color:#38bdf8;
+font-size:18px;
 }
 
 </style>
@@ -30,14 +52,20 @@ border-radius:6px;
 
 <body>
 
-<h1>MBTI Style Personality Test</h1>
+<div class="container">
+
+<h1>Situational Personality Test</h1>
+
+<p class="progress" id="progress"></p>
 
 <h2 id="question"></h2>
 
-<button onclick="answer('A')">Option A</button>
-<button onclick="answer('B')">Option B</button>
+<button id="optionA" onclick="selectAnswer('A')"></button>
+<button id="optionB" onclick="selectAnswer('B')"></button>
 
 <p id="result"></p>
+
+</div>
 
 <script>
 
@@ -46,46 +74,105 @@ let score = 0
 
 const questions = [
 
-{
-q:"You enjoy group discussions and social interaction",
-a:"Yes",
-b:"No"
-},
+{q:"A teammate is not completing their work.",a:"Talk to them politely and offer help.",b:"Ignore them and finish only your part."},
 
-{
-q:"You prefer planning before doing work",
-a:"Yes",
-b:"No"
-},
+{q:"You feel nervous before presenting.",a:"Practice and prepare more.",b:"Avoid presenting."},
 
-{
-q:"You make decisions based on logic rather than feelings",
-a:"Yes",
-b:"No"
-},
+{q:"Your idea is rejected in a meeting.",a:"Ask for feedback and improve the idea.",b:"Stay silent and stop contributing."},
 
-{
-q:"You enjoy leading team activities",
-a:"Yes",
-b:"No"
-},
+{q:"You receive criticism from a coworker.",a:"Listen and learn from feedback.",b:"Argue and defend yourself."},
 
-{
-q:"You like meeting new people",
-a:"Yes",
-b:"No"
-}
+{q:"A deadline is approaching quickly.",a:"Plan tasks and prioritize work.",b:"Work randomly and hope for the best."},
+
+{q:"Two team members argue.",a:"Help them discuss calmly.",b:"Stay away from the situation."},
+
+{q:"You join a new team.",a:"Introduce yourself and talk to everyone.",b:"Stay quiet and observe."},
+
+{q:"You make a mistake at work.",a:"Admit it and fix it.",b:"Hide it and hope nobody notices."},
+
+{q:"Your team faces a difficult problem.",a:"Suggest ideas and motivate the team.",b:"Wait for others to solve it."},
+
+{q:"You disagree with your manager.",a:"Explain your view respectfully.",b:"Ignore the issue."},
+
+{q:"You have too many tasks.",a:"Create a task list and prioritize.",b:"Start randomly."},
+
+{q:"A coworker asks for help.",a:"Assist them if possible.",b:"Say you are too busy."},
+
+{q:"A meeting becomes confusing.",a:"Ask questions for clarity.",b:"Stay silent."},
+
+{q:"Your team succeeds in a project.",a:"Celebrate and appreciate everyone.",b:"Take credit for your work only."},
+
+{q:"You feel stressed at work.",a:"Take a short break and reorganize.",b:"Continue working without rest."},
+
+{q:"You see a problem in a project.",a:"Report and suggest improvements.",b:"Ignore it."},
+
+{q:"You must learn a new skill quickly.",a:"Start practicing and researching.",b:"Avoid learning it."},
+
+{q:"A coworker has a different opinion.",a:"Listen and discuss respectfully.",b:"Reject their idea immediately."},
+
+{q:"You receive a difficult task.",a:"Break it into smaller steps.",b:"Delay starting it."},
+
+{q:"A team member feels demotivated.",a:"Encourage them.",b:"Ignore their situation."},
+
+{q:"You attend a networking event.",a:"Meet and talk to new people.",b:"Stay alone."},
+
+{q:"Your team needs a leader.",a:"Volunteer to organize tasks.",b:"Wait for someone else."},
+
+{q:"A coworker interrupts you.",a:"Respond calmly and continue.",b:"Get angry."},
+
+{q:"A project fails.",a:"Analyze mistakes and learn.",b:"Blame others."},
+
+{q:"You have free time at work.",a:"Learn something new.",b:"Waste time online."},
+
+{q:"Someone criticizes your idea.",a:"Consider their suggestion.",b:"Reject their comment."},
+
+{q:"Your team is behind schedule.",a:"Motivate the team to catch up.",b:"Focus only on your work."},
+
+{q:"A coworker asks for feedback.",a:"Give honest constructive feedback.",b:"Avoid responding."},
+
+{q:"You must make a decision quickly.",a:"Analyze and decide.",b:"Avoid making a decision."},
+
+{q:"A colleague is upset.",a:"Ask if they need help.",b:"Ignore them."},
+
+{q:"Your manager praises your work.",a:"Thank them and stay motivated.",b:"Ignore the praise."},
+
+{q:"A new project begins.",a:"Participate actively.",b:"Stay passive."},
+
+{q:"You face a communication problem.",a:"Clarify the message.",b:"Ignore confusion."},
+
+{q:"A coworker requests teamwork.",a:"Collaborate with them.",b:"Work alone."},
+
+{q:"Your team needs new ideas.",a:"Share creative suggestions.",b:"Stay silent."},
+
+{q:"You feel overwhelmed.",a:"Organize tasks step by step.",b:"Give up temporarily."},
+
+{q:"A coworker makes a mistake.",a:"Help them correct it.",b:"Report them immediately."},
+
+{q:"You must adapt to change.",a:"Learn and adjust.",b:"Resist change."},
+
+{q:"A discussion becomes heated.",a:"Stay calm and mediate.",b:"Leave angrily."},
+
+{q:"Your team completes a challenge.",a:"Appreciate teamwork.",b:"Focus only on results."}
 
 ]
 
 function loadQuestion(){
 
+document.getElementById("progress").innerText =
+"Question " + (current+1) + " / " + questions.length
+
 document.getElementById("question").innerText =
 questions[current].q
 
+document.getElementById("optionA").innerText =
+questions[current].a
+
+document.getElementById("optionB").innerText =
+questions[current].b
+
 }
 
-function answer(option){
+function selectAnswer(option){
 
 if(option==="A") score++
 
@@ -105,16 +192,34 @@ showResult()
 
 function showResult(){
 
-let personality = ""
+let personality=""
 
-if(score >=3)
-personality="Extrovert Leader"
+if(score >=30){
 
-else
-personality="Calm Thinker"
+personality="Strong Leader Personality — Excellent communication, teamwork, and leadership abilities."
 
-document.getElementById("result").innerText =
-"Your personality type: " + personality
+}
+
+else if(score >=20){
+
+personality="Balanced Professional Personality — Good soft skills with room for improvement."
+
+}
+
+else{
+
+personality="Independent Thinker Personality — You prefer working alone and may need to improve collaboration skills."
+
+}
+
+document.getElementById("question").innerText="Test Completed"
+
+document.getElementById("optionA").style.display="none"
+document.getElementById("optionB").style.display="none"
+
+document.getElementById("progress").style.display="none"
+
+document.getElementById("result").innerText=personality
 
 }
 
