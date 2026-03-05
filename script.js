@@ -1,16 +1,17 @@
-const challenges = [
-"Talk for 2 minutes about your favourite goal.",
-"Explain your hobby as if teaching a child.",
-"Introduce yourself like a job interview.",
-"Describe your biggest achievement.",
-"Convince someone to read a book."
-];
+let points = localStorage.getItem("skillpoints");
 
-function newChallenge(){
-let random = Math.floor(Math.random()*challenges.length);
-document.getElementById("challengeText").innerText = challenges[random];
+if(points == null){
+points = 0;
 }
 
-function toggleMode(){
-document.body.classList.toggle("light");
+document.getElementById("points").innerText = points;
+
+function addPoints(){
+
+points = parseInt(points) + 10;
+
+localStorage.setItem("skillpoints",points);
+
+document.getElementById("points").innerText = points;
+
 }
