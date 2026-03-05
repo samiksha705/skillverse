@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Communication Practice</title>
+</head>
+
+<body>
+
+<h1>Communication Practice</h1>
+
+<p>Click the button and speak about the topic.</p>
+
+<button onclick="generateTopic()">Generate Topic</button>
+
+<h2 id="topic"></h2>
+
+<script>
+
+const topics=[
+"Describe your dream job",
+"Talk about leadership",
+"Explain why communication is important",
+"Talk about your biggest challenge"
+];
+
+function generateTopic(){
+let t = topics[Math.floor(Math.random()*topics.length)];
+document.getElementById("topic").innerText=t;
+}
+
+</script>
+
+</body>
+</html>
